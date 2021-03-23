@@ -47,7 +47,7 @@ class Board {
         return Board(chessPieces: chessPieces, isWhiteKingMoved: chessBoard.isWhiteKingMoved, isBlackKingMoved: chessBoard.isBlackKingMoved)
     }
     
-    func newChessBoard() -> Board{
+    class func newChessBoard() -> Board{
         var chessPieces : [[Piece?]] = [[]]
         for i in 0...7 {
             chessPieces[i] = [Piece?](repeating: nil, count: 8)

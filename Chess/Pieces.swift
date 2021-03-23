@@ -73,7 +73,7 @@ class Piece {
     func getPossibleHoriztontalAndVerticalMoves(selfPiece: Piece, board: Board) -> [Move] {
         var moves : [Move?] = []
 
-        for i in 0...(7 - selfPiece.x) {
+        for i in 0...(8 - selfPiece.x) {
             let piece = board.getPiece(x: selfPiece.x+i, y: selfPiece.y)
             moves.append(getMove(selfPiece: selfPiece, board: board, xTo: selfPiece.x+i, yTo: selfPiece.y))
             if piece != nil {
@@ -89,7 +89,7 @@ class Piece {
             }
         }
     
-        for i in 0...(7 - selfPiece.y) {
+        for i in 0...(8 - selfPiece.y) {
             let piece = board.getPiece(x: selfPiece.x, y: selfPiece.y+i)
             moves.append(getMove(selfPiece: selfPiece, board: board, xTo: selfPiece.x, yTo: selfPiece.y+i))
             if piece != nil {
@@ -147,10 +147,10 @@ class Bishop : Piece {
     
 }
 
-class Rock : Piece {
+class Rook : Piece {
     
     init(x: Int, y: Int, color: Color) {
-        super.init(x: x, y: y, color: color, pieceType: .rock, value: 500)
+        super.init(x: x, y: y, color: color, pieceType: .rook, value: 500)
     }
     
     override func getPossibleMoves(board: Board) -> [Move] {
@@ -263,7 +263,7 @@ class King : Piece {
             return nil
         }
         if let piece = board.getPiece(x: self.x, y: self.y-3) {
-            if piece.color == self.color && piece.pieceType == .rock {
+            if piece.color == self.color && piece.pieceType == .rook {
                 if board.getPiece(x: self.x, y: self.y-1) == nil && board.getPiece(x: self.x, y: self.y-2) == nil {
                     return Move(xFrom: self.x, yFrom: self.y, xTo: self.x, yTo: self.y-2, castlingMove: true)
                 }
@@ -280,7 +280,7 @@ class King : Piece {
             return nil
         }
         if let piece = board.getPiece(x: self.x, y: self.y+4) {
-            if piece.color == self.color && piece.pieceType == .rock {
+            if piece.color == self.color && piece.pieceType == .rook {
                 if board.getPiece(x: self.x, y: self.y+1) == nil && board.getPiece(x: self.x, y: self.y+2) == nil && board.getPiece(x: self.x, y: self.y+3) == nil {
                     return Move(xFrom: self.x, yFrom: self.y, xTo: self.x, yTo: self.y+2, castlingMove: true)
                 }
@@ -300,12 +300,16 @@ enum PieceType : String{
     case king = "K"
     case queen = "Q"
     case knight = "N"
-    case rock = "R"
+    case rook = "R"
     case pawn = "P"
     case bishop = "B"
 }
 
-class Move{
+class Move: Equatable {
+    static func == (lhs: Move, rhs: Move) -> Bool {
+        return lhs.xFrom == rhs.xFrom && lhs.xTo == rhs.xTo && lhs.yFrom == rhs.yFrom && lhs.yTo == rhs.yTo && lhs.castlingMove == rhs.castlingMove
+    }
+    
     var xFrom : Int
     var yFrom : Int
     var xTo : Int

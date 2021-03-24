@@ -686,8 +686,7 @@
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="361" y="27" width="640" height="640"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -701,25 +700,25 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Chess Game-->
+        <!--Chess Game View Controller-->
         <scene sceneID="FZq-TS-LfM">
             <objects>
-                <viewController id="7E7-vQ-GLr" customClass="ChessGame" customModule="Chess" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="hrT-n7-dUu">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                <viewController id="7E7-vQ-GLr" customClass="ChessGameViewController" customModule="Chess" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" misplaced="YES" id="hrT-n7-dUu">
+                        <rect key="frame" x="0.0" y="0.0" width="645" height="645"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ia0-D5-BCk">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ia0-D5-BCk">
+                                <rect key="frame" x="0.0" y="0.0" width="642" height="642"/>
                                 <clipView key="contentView" id="AsP-gO-OUJ">
-                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <rect key="frame" x="1" y="1" width="640" height="640"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView id="5um-gl-slu">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="158"/>
+                                        <collectionView autoresizesSubviews="NO" selectable="YES" id="5um-gl-slu">
+                                            <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" id="BHv-uR-wIu">
-                                                <size key="itemSize" width="60" height="60"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" id="1Rp-jR-Ma9">
+                                                <size key="itemSize" width="80" height="80"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -729,21 +728,25 @@
                                         </collectionView>
                                     </subviews>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="642" id="Cpn-h9-l2O"/>
+                                    <constraint firstAttribute="width" constant="642" id="W8Y-TI-n6K"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="39m-1J-zk8">
-                                    <rect key="frame" x="1" y="463" width="448" height="16"/>
+                                    <rect key="frame" x="-100" y="-100" width="448" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="JyU-92-ABr">
-                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <rect key="frame" x="625" y="1" width="16" height="640"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ia0-D5-BCk" firstAttribute="top" secondItem="hrT-n7-dUu" secondAttribute="top" id="Moc-K7-EjV"/>
-                            <constraint firstAttribute="trailing" secondItem="ia0-D5-BCk" secondAttribute="trailing" id="QKz-nd-iUA"/>
-                            <constraint firstItem="ia0-D5-BCk" firstAttribute="leading" secondItem="hrT-n7-dUu" secondAttribute="leading" id="Rvq-1Q-am1"/>
-                            <constraint firstAttribute="bottom" secondItem="ia0-D5-BCk" secondAttribute="bottom" id="wUD-bI-85h"/>
+                            <constraint firstItem="ia0-D5-BCk" firstAttribute="leading" secondItem="hrT-n7-dUu" secondAttribute="leading" id="JA8-hf-peX"/>
+                            <constraint firstAttribute="trailing" secondItem="ia0-D5-BCk" secondAttribute="trailing" id="cfp-Zc-wgO"/>
+                            <constraint firstItem="ia0-D5-BCk" firstAttribute="top" secondItem="hrT-n7-dUu" secondAttribute="top" id="hkI-kP-yar"/>
+                            <constraint firstAttribute="bottom" secondItem="ia0-D5-BCk" secondAttribute="bottom" id="vNH-sL-aP0"/>
                         </constraints>
                     </view>
                     <connections>

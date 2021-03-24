@@ -16,7 +16,8 @@
 		121D1DF42609E5C100FFC1DE /* AI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D1DF32609E5C100FFC1DE /* AI.swift */; };
 		12BC1F902609F7A100BF7FB5 /* ChessSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC1F8E2609F7A100BF7FB5 /* ChessSquare.swift */; };
 		12BC1F912609F7A100BF7FB5 /* ChessSquare.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BC1F8F2609F7A100BF7FB5 /* ChessSquare.xib */; };
-		12BC1F952609F8C900BF7FB5 /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC1F942609F8C900BF7FB5 /* ChessGame.swift */; };
+		12BC1F952609F8C900BF7FB5 /* ChessGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC1F942609F8C900BF7FB5 /* ChessGameViewController.swift */; };
+		12BC1F9A260A0E6C00BF7FB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC1F99260A0E6C00BF7FB5 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,8 @@
 		121D1DF32609E5C100FFC1DE /* AI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AI.swift; sourceTree = "<group>"; };
 		12BC1F8E2609F7A100BF7FB5 /* ChessSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessSquare.swift; sourceTree = "<group>"; };
 		12BC1F8F2609F7A100BF7FB5 /* ChessSquare.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessSquare.xib; sourceTree = "<group>"; };
-		12BC1F942609F8C900BF7FB5 /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
+		12BC1F942609F8C900BF7FB5 /* ChessGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameViewController.swift; sourceTree = "<group>"; };
+		12BC1F99260A0E6C00BF7FB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				121D1DD12608DE0600FFC1DE /* AppDelegate.swift */,
-				12BC1F942609F8C900BF7FB5 /* ChessGame.swift */,
+				12BC1F942609F8C900BF7FB5 /* ChessGameViewController.swift */,
 				121D1DD52608DE0B00FFC1DE /* Assets.xcassets */,
 				121D1DD72608DE0B00FFC1DE /* Main.storyboard */,
 				121D1DDA2608DE0B00FFC1DE /* Info.plist */,
@@ -77,6 +79,7 @@
 				121D1DEB260921CA00FFC1DE /* Pieces.swift */,
 				12BC1F8E2609F7A100BF7FB5 /* ChessSquare.swift */,
 				12BC1F8F2609F7A100BF7FB5 /* ChessSquare.xib */,
+				12BC1F99260A0E6C00BF7FB5 /* Constants.swift */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -153,11 +156,12 @@
 			files = (
 				121D1DE32608FE1200FFC1DE /* MyView.swift in Sources */,
 				121D1DE92609041500FFC1DE /* Board.swift in Sources */,
-				12BC1F952609F8C900BF7FB5 /* ChessGame.swift in Sources */,
+				12BC1F952609F8C900BF7FB5 /* ChessGameViewController.swift in Sources */,
 				121D1DEC260921CA00FFC1DE /* Pieces.swift in Sources */,
 				12BC1F902609F7A100BF7FB5 /* ChessSquare.swift in Sources */,
 				121D1DD22608DE0600FFC1DE /* AppDelegate.swift in Sources */,
 				121D1DF42609E5C100FFC1DE /* AI.swift in Sources */,
+				12BC1F9A260A0E6C00BF7FB5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

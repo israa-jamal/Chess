@@ -121,6 +121,8 @@ class Piece {
                 if piece!.color != selfPiece.color {
                     move = Move(xFrom: selfPiece.x, yFrom: selfPiece.y, xTo: xTo, yTo: yTo, castlingMove: false)
                 }
+            } else {
+                move = Move(xFrom: selfPiece.x, yFrom: selfPiece.y, xTo: xTo, yTo: yTo, castlingMove: false)
             }
         }
         return move
@@ -132,6 +134,10 @@ class Piece {
     
     func clone() -> Piece{
         return self
+    }
+    
+    func getPieceImageName() -> String{
+        return self.color.rawValue + self.pieceType.rawValue
     }
 }
 
@@ -202,7 +208,7 @@ class Pawn : Piece {
     override func getPossibleMoves(board: Board) -> [Move] {
         var moves : [Move?] = []
         var direction = -1
-        if self.color == .black {
+        if self.color == .white {
             direction = 1
         }
         if board.getPiece(x: self.x, y: self.y+direction) == nil {
@@ -224,7 +230,7 @@ class Pawn : Piece {
     }
     
     func isStartingPosition() -> Bool {
-        if self.color == .black {
+        if self.color == .white {
             return self.y == 1
         } else {
             return self.y == 8 - 2

@@ -9,11 +9,26 @@ import Cocoa
 
 class ChessSquare: NSCollectionViewItem {
 
-    @IBOutlet weak var chessPiece: NSButton!
-
+    @IBOutlet weak var chessPiece: NSImageView!
+    @IBOutlet weak var contentView: MyView!
+    
+    var piece: Piece?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        contentView.backgroundColor = NSColor(named: K.darkBrownColor)
     }
     
+    func updateCell(with piece: Piece?) {
+        self.piece = piece
+        var imageView : NSImage? = nil
+        if piece != nil {
+            let imageName = piece!.getPieceImageName()
+            imageView = NSImage(named: imageName)
+        }
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.75
+            chessPiece.animator().image = imageView
+        })
+    }
 }

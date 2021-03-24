@@ -10,6 +10,9 @@ import Foundation
 
 class Board {
     
+    static let width = 8
+    static let height = 8
+    
     var chessPieces: [[Piece?]]
     var isWhiteKingMoved : Bool
     var isBlackKingMoved : Bool
@@ -48,42 +51,42 @@ class Board {
     }
     
     class func newChessBoard() -> Board{
-        var chessPieces : [[Piece?]] = [[]]
+        var chessPieces : [[Piece?]] = Array(repeating: Array(), count: 8)
         for i in 0...7 {
-            chessPieces[i] = [Piece?](repeating: nil, count: 8)
+            chessPieces[i] = Array(repeating: nil, count: 8)
         }
         
         //Pawns
         for x in 0...7 {
-            chessPieces[x][8 - 2] = Pawn(x: x, y: 8 - 2, color: .white)
-            chessPieces[x][1] = Pawn(x: x, y: 1, color: .black)
+            chessPieces[x][height - 2] = Pawn(x: x, y: 8 - 2, color: .black)
+            chessPieces[x][1] = Pawn(x: x, y: 1, color: .white)
         }
         
         //Rocks
-        chessPieces[0][8-1] = Rook(x: 0, y: 8-1, color: .white)
-        chessPieces[8-1][8-1] = Rook(x: 8-1, y: 8-1, color: .white)
-        chessPieces[0][0] = Rook(x: 0, y: 0, color: .black)
-        chessPieces[8-1][0] = Rook(x: 8-1, y: 0, color: .black)
+        chessPieces[0][height-1] = Rook(x: 0, y: 8-1, color: .black)
+        chessPieces[width-1][height-1] = Rook(x: 8-1, y: 8-1, color: .black)
+        chessPieces[0][0] = Rook(x: 0, y: 0, color: .white)
+        chessPieces[width-1][0] = Rook(x: 8-1, y: 0, color: .white)
 
         //Knights
-        chessPieces[1][8-1] = Knight(x: 1, y: 8-1, color: .white)
-        chessPieces[8-2][8-1] = Knight(x: 8-2, y: 8-1, color: .white)
-        chessPieces[1][0] = Knight(x: 1, y: 0, color: .black)
-        chessPieces[8-2][0] = Knight(x: 8-2, y: 0, color: .black)
+        chessPieces[1][height-1] = Knight(x: 1, y: 8-1, color: .black)
+        chessPieces[width-2][height-1] = Knight(x: 8-2, y: 8-1, color: .black)
+        chessPieces[1][0] = Knight(x: 1, y: 0, color: .white)
+        chessPieces[width-2][0] = Knight(x: 8-2, y: 0, color: .white)
         
         //Bishops
-        chessPieces[2][8-1] = Bishop(x: 2, y: 8-1, color: .white)
-        chessPieces[8-3][8-1] = Bishop(x: 8-3, y: 8-1, color: .white)
-        chessPieces[2][0] = Bishop(x: 2, y: 0, color: .black)
-        chessPieces[8-3][0] = Bishop(x: 8-3, y: 0, color: .black)
+        chessPieces[2][height-1] = Bishop(x: 2, y: 8-1, color: .black)
+        chessPieces[width-3][height-1] = Bishop(x: 8-3, y: 8-1, color: .black)
+        chessPieces[2][0] = Bishop(x: 2, y: 0, color: .white)
+        chessPieces[width-3][0] = Bishop(x: 8-3, y: 0, color: .white)
         
         //King
-        chessPieces[4][8-1] = King(x: 4, y: 8-1, color: .white)
-        chessPieces[4][0] = King(x: 4, y: 0, color: .black)
+        chessPieces[4][height-1] = King(x: 4, y: 8-1, color: .black)
+        chessPieces[4][0] = King(x: 4, y: 0, color: .white)
 
         //Queen
-        chessPieces[3][8-1] = Queen(x: 3, y: 8-1, color: .white)
-        chessPieces[3][0] = Queen(x: 3, y: 0, color: .black)
+        chessPieces[3][height-1] = Queen(x: 3, y: 8-1, color: .black)
+        chessPieces[3][0] = Queen(x: 3, y: 0, color: .white)
         
         return Board(chessPieces: chessPieces, isWhiteKingMoved: false, isBlackKingMoved: false)
     }
@@ -126,9 +129,9 @@ class Board {
             }
             if move.xTo > move.xFrom {
                 guard let rook = self.chessPieces[move.xFrom][8-1] else {return}
-                rook.x = 8 - 4
-                self.chessPieces[8-4][0] = rook
-                self.chessPieces[move.xFrom][8-1] = nil
+                rook.x = Board.width - 4
+                self.chessPieces[Board.width-4][0] = rook
+                self.chessPieces[move.xFrom][Board.width-1] = nil
                 
             }
         }

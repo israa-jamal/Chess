@@ -712,7 +712,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="642" height="642"/>
                                 <clipView key="contentView" id="AsP-gO-OUJ">
                                     <rect key="frame" x="1" y="1" width="640" height="640"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView autoresizesSubviews="NO" selectable="YES" id="5um-gl-slu">
                                             <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
@@ -755,7 +755,7 @@
                 </viewController>
                 <customObject id="2ae-Er-FI9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="66" y="661"/>
+            <point key="canvasLocation" x="76" y="1134"/>
         </scene>
     </scenes>
 </document>

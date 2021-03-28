@@ -9,6 +9,11 @@
 import Foundation
 
 class Board {
+//    func copy(with zone: NSZone? = nil) -> Any {
+//        let copy = Board(chessPieces: chessPieces, isWhiteKingMoved: isWhiteKingMoved, isBlackKingMoved: isBlackKingMoved)
+//        return copy
+//
+//    }
     
     static let width = 8
     static let height = 8
@@ -33,62 +38,63 @@ class Board {
         return chessPieces[x][y]
     }
     
-    class func clone(chessBoard: Board) -> Board{
-        var chessPieces : [[Piece?]] = [[]]
-        for i in 0...7 {
-            chessPieces[i] = [Piece?](repeating: nil, count: 8)
-        }
-        for x in 0...7 {
-            for y in 0...7 {
-                let piece = chessBoard.chessPieces[x][y]
-                if piece != nil {
-                    chessPieces[x][y] = piece?.clone()
-                }
-            }
-        }
-        
-        return Board(chessPieces: chessPieces, isWhiteKingMoved: chessBoard.isWhiteKingMoved, isBlackKingMoved: chessBoard.isBlackKingMoved)
-    }
-    
+         static func clone(chessBoard: Board) -> Board{
+             var pieces : [[Piece?]] = Array(repeating: Array(), count: 8)
+             for i in 0...7 {
+                 pieces[i] = Array(repeating: nil, count: 8)
+             }
+             for x in 0...7 {
+                 for y in 0...7 {
+                     let piece = chessBoard.chessPieces[x][y]
+                     if piece != nil {
+                         pieces[x][y] = piece?.clone()
+                     }
+                 }
+             }
+     
+             return Board(chessPieces: pieces, isWhiteKingMoved: chessBoard.isWhiteKingMoved, isBlackKingMoved: chessBoard.isBlackKingMoved)
+         }
+         
+
     class func newChessBoard() -> Board{
-        var chessPieces : [[Piece?]] = Array(repeating: Array(), count: 8)
+        var pieces : [[Piece?]] = Array(repeating: Array(), count: 8)
         for i in 0...7 {
-            chessPieces[i] = Array(repeating: nil, count: 8)
+            pieces[i] = Array(repeating: nil, count: 8)
         }
         
         //Pawns
         for x in 0...7 {
-            chessPieces[x][height - 2] = Pawn(x: x, y: 8 - 2, color: .black)
-            chessPieces[x][1] = Pawn(x: x, y: 1, color: .white)
+            pieces[x][height - 2] = Pawn(x: x, y: 8 - 2, color: .black)
+            pieces[x][1] = Pawn(x: x, y: 1, color: .white)
         }
         
         //Rocks
-        chessPieces[0][height-1] = Rook(x: 0, y: 8-1, color: .black)
-        chessPieces[width-1][height-1] = Rook(x: 8-1, y: 8-1, color: .black)
-        chessPieces[0][0] = Rook(x: 0, y: 0, color: .white)
-        chessPieces[width-1][0] = Rook(x: 8-1, y: 0, color: .white)
+        pieces[0][height-1] = Rook(x: 0, y: 8-1, color: .black)
+        pieces[width-1][height-1] = Rook(x: 8-1, y: 8-1, color: .black)
+        pieces[0][0] = Rook(x: 0, y: 0, color: .white)
+        pieces[width-1][0] = Rook(x: 8-1, y: 0, color: .white)
 
         //Knights
-        chessPieces[1][height-1] = Knight(x: 1, y: 8-1, color: .black)
-        chessPieces[width-2][height-1] = Knight(x: 8-2, y: 8-1, color: .black)
-        chessPieces[1][0] = Knight(x: 1, y: 0, color: .white)
-        chessPieces[width-2][0] = Knight(x: 8-2, y: 0, color: .white)
+        pieces[1][height-1] = Knight(x: 1, y: 8-1, color: .black)
+        pieces[width-2][height-1] = Knight(x: 8-2, y: 8-1, color: .black)
+        pieces[1][0] = Knight(x: 1, y: 0, color: .white)
+        pieces[width-2][0] = Knight(x: 8-2, y: 0, color: .white)
         
         //Bishops
-        chessPieces[2][height-1] = Bishop(x: 2, y: 8-1, color: .black)
-        chessPieces[width-3][height-1] = Bishop(x: 8-3, y: 8-1, color: .black)
-        chessPieces[2][0] = Bishop(x: 2, y: 0, color: .white)
-        chessPieces[width-3][0] = Bishop(x: 8-3, y: 0, color: .white)
+        pieces[2][height-1] = Bishop(x: 2, y: 8-1, color: .black)
+        pieces[width-3][height-1] = Bishop(x: 8-3, y: 8-1, color: .black)
+        pieces[2][0] = Bishop(x: 2, y: 0, color: .white)
+        pieces[width-3][0] = Bishop(x: 8-3, y: 0, color: .white)
         
         //King
-        chessPieces[4][height-1] = King(x: 4, y: 8-1, color: .black)
-        chessPieces[4][0] = King(x: 4, y: 0, color: .white)
+        pieces[4][height-1] = King(x: 4, y: 8-1, color: .black)
+        pieces[4][0] = King(x: 4, y: 0, color: .white)
 
         //Queen
-        chessPieces[3][height-1] = Queen(x: 3, y: 8-1, color: .black)
-        chessPieces[3][0] = Queen(x: 3, y: 0, color: .white)
+        pieces[3][height-1] = Queen(x: 3, y: 8-1, color: .black)
+        pieces[3][0] = Queen(x: 3, y: 0, color: .white)
         
-        return Board(chessPieces: chessPieces, isWhiteKingMoved: false, isBlackKingMoved: false)
+        return Board(chessPieces: pieces, isWhiteKingMoved: false, isBlackKingMoved: false)
     }
     
     func getPossibleMoves(color: Color) -> [Move] {
@@ -106,16 +112,24 @@ class Board {
         return moves
     }
     
-    func performMove(_ move: Move) {
-        guard let piece = self.chessPieces[move.xFrom][move.yFrom] else {return}
+    func performMove( _ move: Move, completion: ((Piece?)-> Void)? = nil, isDummyMove: Bool = true) {
+        var dummyPiece : Piece?
+        if isDummyMove {
+            dummyPiece = self.chessPieces[move.xFrom][move.yFrom]?.copy() as? Piece
+        } else {
+            dummyPiece = self.chessPieces[move.xFrom][move.yFrom]
+        }
+        guard let piece = dummyPiece else {return}
         piece.x = move.xTo
         piece.y = move.yTo
         self.chessPieces[move.xTo][move.yTo] = piece
         self.chessPieces[move.xFrom][move.yFrom] = nil
         
         if piece.pieceType == .pawn {
-            if piece.y == 0 || piece.y == 8-1 {
+            if piece.y == 0 || piece.y == Board.height-1 {
                 self.chessPieces[piece.x][piece.y] = Queen(x: piece.x, y: piece.y, color: piece.color)
+                let piece = self.chessPieces[piece.x][piece.y]
+                completion?(piece)
             }
         }
         
@@ -168,7 +182,8 @@ class Board {
                 }
             }
         }
-    return isKingFound
+    return !isKingFound
     }
 }
+
 
